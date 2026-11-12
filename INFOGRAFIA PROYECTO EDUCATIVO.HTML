@@ -1,0 +1,1604 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Botiquín de la Memoria</title>
+
+<style>
+:root {
+  --verde: #254f3b;
+  --verde-claro: #527b5d;
+  --verde-suave: #e9f0e7;
+  --crema: #faf7ed;
+  --terracota: #b66b4c;
+  --dorado: #d5ad65;
+  --texto: #34443a;
+  --blanco: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--crema);
+  color: var(--texto);
+  line-height: 1.7;
+}
+
+/* PORTADA INFOGRAFÍA */
+.portada {
+  background:
+    radial-gradient(circle at 10% 20%, rgba(213,173,101,.18), transparent 23%),
+    radial-gradient(circle at 90% 80%, rgba(213,173,101,.15), transparent 25%),
+    linear-gradient(135deg, #1d4935, #527b5d);
+  color: white;
+  padding: 48px 22px 55px;
+  position: relative;
+  overflow: hidden;
+}
+
+.portada::before {
+  content: "❧";
+  position: absolute;
+  font-size: 260px;
+  color: white;
+  opacity: .07;
+  left: -35px;
+  top: -80px;
+  transform: rotate(-25deg);
+}
+
+.portada::after {
+  content: "❧";
+  position: absolute;
+  font-size: 260px;
+  color: white;
+  opacity: .07;
+  right: -35px;
+  bottom: -100px;
+  transform: rotate(155deg);
+}
+
+.portada-interior {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  align-items: center;
+  gap: 35px;
+}
+
+.identificacion {
+  letter-spacing: 1.5px;
+  font-size: 13px;
+  line-height: 1.9;
+  text-transform: uppercase;
+  color: #e5eddf;
+}
+
+.etiqueta-proyecto {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 7px 15px;
+  border: 1px solid rgba(255,255,255,.45);
+  border-radius: 30px;
+  color: #f4dfad;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.titulo {
+  max-width: 650px;
+  margin: 18px 0;
+  font-size: clamp(38px, 5vw, 62px);
+  line-height: 1.05;
+  font-family: Georgia, serif;
+  color: #fff2cf;
+}
+
+.subtitulo {
+  max-width: 620px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #edf2e8;
+}
+
+.ilustracion-principal {
+  min-height: 310px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.ilustracion-circulo {
+  width: 280px;
+  height: 280px;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 50%;
+  background: rgba(255,255,255,.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 18px rgba(255,255,255,.035),
+              0 0 0 38px rgba(255,255,255,.025);
+}
+
+.ilustracion-central {
+  font-size: 112px;
+  filter: drop-shadow(0 8px 9px rgba(0,0,0,.2));
+}
+
+.flor-decorativa {
+  position: absolute;
+  font-size: 38px;
+}
+
+.flor-uno { top: 22px; right: 55px; }
+.flor-dos { bottom: 25px; left: 45px; }
+.flor-tres { bottom: 55px; right: 35px; font-size: 27px; }
+
+/* INTRODUCCIÓN Y RESUMEN */
+.introduccion {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 38px 20px 10px;
+  text-align: center;
+}
+
+.introduccion-texto {
+  max-width: 780px;
+  margin: auto;
+  color: var(--verde);
+  font-family: Georgia, serif;
+  font-size: 23px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.introduccion-texto strong {
+  color: var(--terracota);
+}
+
+.resumen-visual {
+  max-width: 1050px;
+  margin: 25px auto 15px;
+  padding: 0 20px;
+}
+
+.resumen-titulo {
+  text-align: center;
+  color: var(--verde);
+  font-family: Georgia, serif;
+  font-size: 25px;
+  margin-bottom: 18px;
+}
+
+.tarjetas-iniciales {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.tarjeta-inicial {
+  background: white;
+  border-radius: 15px;
+  padding: 21px 15px;
+  text-align: center;
+  border: 1px solid #e4e9df;
+  box-shadow: 0 5px 14px rgba(38,68,46,.07);
+  border-bottom: 4px solid var(--verde-claro);
+}
+
+.tarjeta-inicial .simbolo {
+  font-size: 34px;
+  display: block;
+  margin-bottom: 9px;
+}
+
+.tarjeta-inicial strong {
+  display: block;
+  color: var(--verde);
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.tarjeta-inicial p {
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+  margin: 0;
+  color: #657368;
+}
+
+/* RECORRIDO */
+.recorrido {
+  max-width: 1050px;
+  margin: 35px auto;
+  padding: 0 20px;
+}
+
+.recorrido-titulo {
+  text-align: center;
+  color: var(--verde);
+  font-family: Georgia, serif;
+  font-size: 24px;
+  margin-bottom: 17px;
+}
+
+.recorrido-pasos {
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr 40px 1fr;
+  align-items: center;
+  gap: 8px;
+}
+
+.paso {
+  background: #e9f0e7;
+  border-radius: 14px;
+  padding: 17px 10px;
+  text-align: center;
+  color: var(--verde);
+  border: 1px solid #d9e4d5;
+}
+
+.paso .paso-icono {
+  display: block;
+  font-size: 29px;
+  margin-bottom: 5px;
+}
+
+.paso strong {
+  display: block;
+  font-size: 16px;
+}
+
+.paso small {
+  display: block;
+  margin-top: 4px;
+  color: #66766a;
+  font-size: 12px;
+}
+
+.flecha-recorrido {
+  color: var(--terracota);
+  font-size: 27px;
+  text-align: center;
+}
+
+/* MENÚ DE TARJETAS INTERACTIVAS */
+.navegacion-inicial {
+  max-width: 1100px;
+  margin: 40px auto 30px;
+  padding: 0 20px;
+}
+
+.navegacion-inicial h2 {
+  text-align: center;
+  margin: 0 0 8px;
+}
+
+.navegacion-inicial > p {
+  text-align: center;
+  color: #6d7c6e;
+  font-size: 14px;
+  margin-bottom: 22px;
+}
+
+.accesos-secciones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.acceso {
+  border: 2px solid #e1e8dc;
+  background: white;
+  border-radius: 14px;
+  padding: 16px 10px;
+  color: var(--verde);
+  font-family: inherit;
+  cursor: pointer;
+  text-align: center;
+  font-size: 13.5px;
+  font-weight: 700;
+  transition: all .25s ease;
+  box-shadow: 0 3px 10px rgba(38,68,46,.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.acceso:hover {
+  border-color: var(--verde-claro);
+  transform: translateY(-3px);
+}
+
+.acceso.activo {
+  background: var(--verde);
+  color: white;
+  border-color: var(--verde);
+  box-shadow: 0 6px 16px rgba(37, 79, 59, 0.25);
+  transform: translateY(-2px);
+}
+
+.acceso span {
+  display: block;
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+/* CONTENEDOR DE CONTENIDO DESPLEGADO */
+.contenedor {
+  max-width: 1100px;
+  margin: 0 auto 65px;
+  padding: 0 20px;
+}
+
+.panel-seccion {
+  display: none;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 6px 22px rgba(38, 68, 46, .09);
+  border: 1px solid #e5e9df;
+  border-top: 6px solid var(--verde);
+  padding: 32px 36px;
+  animation: aparecer .35s ease;
+}
+
+.panel-seccion.activa {
+  display: block;
+}
+
+.encabezado-panel {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 18px;
+  margin-bottom: 22px;
+  border-bottom: 2px solid var(--verde-suave);
+}
+
+.numero {
+  min-width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--verde);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.icono {
+  font-size: 28px;
+}
+
+.titulo-panel {
+  color: var(--verde);
+  font-family: Georgia, serif;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+@keyframes aparecer {
+  from {opacity: 0; transform: translateY(8px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+h2 {
+  color: var(--verde);
+  font-family: Georgia, serif;
+  font-size: 23px;
+  margin: 24px 0 12px;
+}
+
+h3 {
+  color: var(--terracota);
+  font-size: 18px;
+  margin: 22px 0 9px;
+}
+
+h4 {
+  color: var(--verde-claro);
+  font-size: 16px;
+  margin: 16px 0 7px;
+}
+
+p {
+  margin-bottom: 14px;
+  text-align: justify;
+}
+
+ul {
+  padding-left: 25px;
+  margin: 10px 0 17px;
+}
+
+li {
+  margin-bottom: 9px;
+}
+
+.destacado {
+  background: #f0f5ed;
+  border-left: 5px solid var(--verde-claro);
+  border-radius: 8px;
+  padding: 17px 20px;
+  margin: 18px 0;
+}
+
+.cita {
+  background: #fbf2e8;
+  border-left: 5px solid var(--terracota);
+  padding: 16px 20px;
+  margin: 18px 0;
+  border-radius: 8px;
+  font-style: italic;
+}
+
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 13px;
+  margin: 18px 0;
+}
+
+.tarjeta {
+  background: #f3f6ef;
+  padding: 17px;
+  border-radius: 11px;
+  border-bottom: 3px solid var(--verde-claro);
+}
+
+.tarjeta strong {
+  color: var(--verde);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 580px;
+  background: white;
+}
+
+th {
+  background: var(--verde);
+  color: white;
+  padding: 13px;
+  text-align: left;
+}
+
+td {
+  border: 1px solid #dce5d9;
+  padding: 12px;
+  vertical-align: top;
+}
+
+tr:nth-child(even) {
+  background: #f2f6ef;
+}
+
+.referencia {
+  padding: 13px 15px;
+  border-bottom: 1px solid #e6e9e2;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+
+.referencia a {
+  color: #386b50;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.referencia a:hover {
+  text-decoration: underline;
+}
+
+.pie {
+  text-align: center;
+  background: var(--verde);
+  color: #f5f1df;
+  padding: 30px 20px;
+}
+
+.pie p {
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.pie strong {
+  color: #f0d69c;
+}
+
+.boton-superior {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 9px 18px;
+  border: 1px solid #d5dfd0;
+  border-radius: 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  transition: .2s;
+}
+
+.boton-superior:hover {
+  background: rgba(255,255,255,.15);
+}
+
+@media(max-width:750px) {
+  .portada-interior {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 5px;
+  }
+
+  .titulo, .subtitulo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ilustracion-principal {
+    min-height: 230px;
+  }
+
+  .ilustracion-circulo {
+    width: 205px;
+    height: 205px;
+  }
+
+  .ilustracion-central {
+    font-size: 85px;
+  }
+
+  .tarjetas-iniciales {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .panel-seccion {
+    padding: 22px 18px;
+  }
+}
+
+@media(max-width:480px) {
+  .recorrido-pasos {
+    grid-template-columns: 1fr;
+  }
+
+  .flecha-recorrido {
+    transform: rotate(90deg);
+  }
+
+  .introduccion-texto {
+    font-size: 19px;
+  }
+
+  p {
+    text-align: left;
+  }
+}
+
+@media print {
+  body { background: white; }
+  .accesos-secciones { display: none; }
+  .panel-seccion { display: block !important; margin-bottom: 25px; box-shadow: none; }
+}
+</style>
+</head>
+
+<body id="inicio">
+
+<header class="portada">
+  <div class="portada-interior">
+
+    <div class="portada-texto">
+      <div class="identificacion">
+        Yennifer Carolina Lozada<br>
+        Universidad del Quindío<br>
+        Licenciatura en Ciencias Sociales
+      </div>
+
+      <div class="etiqueta-proyecto">
+        Modelo educativo · Ibagué, Tolima
+      </div>
+
+      <h1 class="titulo">
+        Botiquín de la Memoria
+      </h1>
+
+      <p class="subtitulo">
+        Un modelo educativo para recuperar los saberes
+        sobre las plantas locales en un colegio público
+        urbano de Ibagué.
+      </p>
+    </div>
+
+    <div class="ilustracion-principal">
+      <span class="flor-decorativa flor-uno">✿</span>
+      <span class="flor-decorativa flor-dos">❀</span>
+      <span class="flor-decorativa flor-tres">✽</span>
+
+      <div class="ilustracion-circulo">
+        <span class="ilustracion-central">🌿</span>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<div class="introduccion">
+  <p class="introduccion-texto">
+    Una propuesta que conecta
+    <strong>la escuela, las familias, la ciencia
+    y el territorio</strong> para recuperar
+    la memoria vegetal de Ibagué.
+  </p>
+</div>
+
+<section class="resumen-visual">
+  <h2 class="resumen-titulo">
+    ¿Qué busca recuperar este modelo?
+  </h2>
+
+  <div class="tarjetas-iniciales">
+    <div class="tarjeta-inicial">
+      <span class="simbolo">🌱</span>
+      <strong>Plantas locales</strong>
+      <p>Reconocer y recuperar plantas de la vida cotidiana.</p>
+    </div>
+
+    <div class="tarjeta-inicial">
+      <span class="simbolo">👵</span>
+      <strong>Saberes familiares</strong>
+      <p>Escuchar y valorar los conocimientos entre generaciones.</p>
+    </div>
+
+    <div class="tarjeta-inicial">
+      <span class="simbolo">🔬</span>
+      <strong>Diálogo de saberes</strong>
+      <p>Relacionar el conocimiento familiar con la ciencia.</p>
+    </div>
+
+    <div class="tarjeta-inicial">
+      <span class="simbolo">🌳</span>
+      <strong>Cuidado del territorio</strong>
+      <p>Aprender a cuidar las plantas y los espacios comunes.</p>
+    </div>
+  </div>
+</section>
+
+<section class="recorrido">
+  <h2 class="recorrido-titulo">
+    Un recorrido de aprendizaje
+  </h2>
+
+  <div class="recorrido-pasos">
+    <div class="paso">
+      <span class="paso-icono">🏡</span>
+      <strong>Casa</strong>
+      <small>Recuperar los saberes heredados</small>
+    </div>
+
+    <div class="flecha-recorrido">➜</div>
+
+    <div class="paso">
+      <span class="paso-icono">🏫</span>
+      <strong>Escuela</strong>
+      <small>Investigar, aprender y cuidar</small>
+    </div>
+
+    <div class="flecha-recorrido">➜</div>
+
+    <div class="paso">
+      <span class="paso-icono">🏙️</span>
+      <strong>Ciudad</strong>
+      <small>Compartir y devolver los saberes</small>
+    </div>
+  </div>
+</section>
+
+<section class="navegacion-inicial" id="explorador">
+  <h2>Explora el modelo educativo</h2>
+  <p>
+    Selecciona cualquiera de los siete apartados para desplegar su contenido completo.
+  </p>
+
+  <div class="accesos-secciones">
+    <button class="acceso" onclick="abrirSeccion(0)">
+      <span>🔍</span>
+      1. Contexto y diagnóstico
+    </button>
+
+    <button class="acceso" onclick="abrirSeccion(1)">
+      <span>📚</span>
+      2. Marco teórico
+    </button>
+
+    <button class="acceso" onclick="abrirSeccion(2)">
+      <span>💡</span>
+      3. Filosofía y objetivos
+    </button>
+
+    <button class="acceso" onclick="abrirSeccion(3)">
+      <span>✏️</span>
+      4. Diseño pedagógico
+    </button>
+
+    <button class="acceso" onclick="abrirSeccion(4)">
+      <span>🤝</span>
+      5. Implementación e impacto
+    </button>
+
+    <button class="acceso" onclick="abrirSeccion(5)">
+      <span>💭</span>
+      6. Reflexión
+    </button>
+
+    <button class="acceso" onclick="abrirSeccion(6)">
+      <span>📖</span>
+      7. Referencias
+    </button>
+  </div>
+</section>
+
+<main class="contenedor">
+
+<!-- SECCIÓN 1 -->
+<article class="panel-seccion">
+  <div class="encabezado-panel">
+    <span class="numero">1</span>
+    <span class="icono">🔍</span>
+    <span class="titulo-panel">Contexto y diagnóstico</span>
+  </div>
+
+  <h2>Contexto educativo</h2>
+
+  <p>
+  El modelo se propone para estudiantes de grado décimo
+  (15 a 16 años) de un colegio público urbano de Ibagué,
+  capital del departamento del Tolima. El grado décimo
+  hace parte de la educación media, una etapa en la que
+  los jóvenes empiezan a pensar en su proyecto de vida
+  y tienen la madurez necesaria para investigar,
+  entrevistar y liderar proyectos con la comunidad.
+  </p>
+
+  <p>
+  La elección de un contexto urbano, y no rural,
+  responde a una razón pedagógica. En el campo, las
+  plantas siguen presentes en la vida cotidiana y su
+  uso se aprende de forma natural en el hogar. En la
+  ciudad, en cambio, el crecimiento de las
+  construcciones, la pavimentación y el consumo de
+  productos industrializados han alejado a los jóvenes
+  de ese contacto, y los saberes sobre las plantas
+  tienden a verse como algo del pasado o propio del
+  campo. Es en este tipo de entorno, donde los saberes
+  se ignoran o se desechan, donde la escuela puede
+  aportar más. Además, aunque en muchas familias
+  urbanas esos saberes ya no se transmiten de manera
+  activa, suelen seguir vivos en la memoria de abuelos,
+  madres, padres y tías, y es posible recuperarlos.
+  </p>
+
+  <h2>Retos educativos identificados</h2>
+
+  <h3>1. Pérdida de plantas y de los saberes asociados</h3>
+
+  <p>
+  En Ibagué han desaparecido o se han vuelto
+  desconocidas plantas que antes hacían parte de la
+  vida diaria. El cilantrón, una hierba de hoja gruesa
+  y aroma más intenso que el cilantro, crecía en
+  cualquier esquina y se usaba para preparar huevos
+  o agregar a la sopa. Al construirse y pavimentarse,
+  se quedó sin la tierra que necesitaba para propagarse
+  por sí solo, y hoy es difícil de encontrar. El achiote
+  ilustra otra forma de pérdida: hace unas décadas
+  había árboles en muchas esquinas y aún quedan
+  algunos, pero la mayoría de las personas no sabe
+  qué son. En el primer caso desaparece la planta,
+  y en el segundo desaparece el conocimiento,
+  aunque la planta siga presente.
+  </p>
+
+  <h3>2. Ausencia de espacios escolares de cuidado</h3>
+
+  <p>
+  Las instituciones educativas no suministran
+  medicamentos a los estudiantes y, en general,
+  los colegios públicos no cuentan con enfermería.
+  Esto deja sin respuesta situaciones cotidianas de
+  la vida escolar, como el malestar estomacal, el frío,
+  el dolor de cabeza, el dolor menstrual o la ansiedad,
+  que obligan a esperar a que la familia llegue por el
+  estudiante. Frente a este vacío se plantea la creación
+  de un banco de hierbas, entendido como un espacio
+  de acompañamiento donde se preparen aromáticas
+  con plantas aportadas por las familias y cultivadas
+  en el colegio. Este espacio cumpliría una función
+  de primer acompañamiento y bienestar, sin ser una
+  enfermería ni sustituir la atención médica, y tendría
+  que ser diseñado desde cero, con reglas claras de
+  seguridad.
+  </p>
+
+  <h3>3. Ruptura en la transmisión del saber entre generaciones</h3>
+
+  <p>
+  Los conocimientos que abuelos, madres, padres y tías
+  tienen sobre plantas de uso alimentario, para
+  infusiones o para malestares cotidianos circulan solo
+  en el ámbito doméstico. La escuela no los reconoce,
+  ni los incluye en el currículo, de modo que los jóvenes
+  no tienen un espacio donde preguntar por ellos,
+  valorarlos o ponerlos en diálogo con lo que aprenden
+  en las asignaturas. Al no ser reconocidos por la
+  escuela, no se transmiten, ni se valoran como
+  conocimiento legítimo.
+  </p>
+</article>
+
+<!-- SECCIÓN 2 -->
+<article class="panel-seccion">
+  <div class="encabezado-panel">
+    <span class="numero">2</span>
+    <span class="icono">📚</span>
+    <span class="titulo-panel">Marco teórico</span>
+  </div>
+
+  <h2>Pierre Bourdieu: capital cultural y violencia simbólica</h2>
+
+  <p>
+  Pierre Bourdieu y Jean-Claude Passeron plantean
+  que la escuela no es un espacio neutral, pues valora
+  y transmite principalmente la cultura académica de
+  los grupos dominantes, reproduciendo así las
+  desigualdades sociales. Denomina capital cultural
+  al conjunto de conocimientos, hábitos, gustos y
+  títulos que las personas adquieren en su entorno
+  familiar y social. Este se presenta en tres estados:
+  incorporado, cuando se interioriza mediante la
+  experiencia; objetivado, cuando se expresa en bienes
+  culturales, como libros y objetos; e institucionalizado,
+  cuando es reconocido mediante títulos académicos.
+  Por ejemplo, el conocimiento familiar sobre las
+  plantas constituye un capital cultural incorporado
+  que, al no ser reconocido por la escuela, puede
+  generar una violencia simbólica: la imposición
+  silenciosa de una cultura como superior, haciendo
+  que los estudiantes consideren que sus propios
+  saberes tienen menos valor. El modelo busca revertir
+  esta situación reconociendo e incorporando esos
+  conocimientos al aprendizaje escolar.
+  </p>
+
+  <h2>Paulo Freire y Catherine Walsh: educación bancaria y educación problematizadora</h2>
+
+  <p>
+  Catherine Walsh propone una pedagogía que cuestiona
+  la colonialidad del poder y del saber, es decir,
+  las jerarquías históricas que han privilegiado
+  determinados conocimientos, pueblos y formas de
+  vida sobre otros. Esta perspectiva entiende la
+  educación como una praxis que une la reflexión
+  crítica con acciones para transformar esas
+  desigualdades. Paulo Freire, plantea superar la
+  educación bancaria, donde el docente transmite
+  contenidos y el estudiante los recibe pasivamente,
+  para promover una educación problematizadora y
+  dialógica, en la que los estudiantes analicen su
+  realidad, construyan conocimientos y participen en
+  su transformación. En el modelo, esto significa
+  investigar los saberes familiares y comunitarios
+  sobre las plantas, reconocer su importancia y
+  reflexionar sobre su pérdida y recuperación.
+  </p>
+
+  <h2>Boaventura de Sousa Santos: ecología de saberes</h2>
+
+  <p>
+  De Sousa Santos señala que el conocimiento
+  científico occidental ha sido presentado como el
+  único válido, y que esto ha llevado a descartar o
+  destruir otros saberes, lo que denomina epistemicidio.
+  Propone una ecología de saberes, en la que distintos
+  tipos de conocimiento, el científico y el popular,
+  convivan y se complementen sin que uno sea superior
+  al otro. En el modelo, el saber de las familias se
+  estudia junto con la biología y la química: la ciencia
+  ayuda a comprender y a verificar, y el saber popular
+  aporta experiencia y memoria.
+  </p>
+
+  <h2>Catherine Walsh: interculturalidad crítica</h2>
+
+  <p>
+  Walsh plantea que la interculturalidad no es solo
+  reconocer la diversidad, sino cuestionar las
+  estructuras que han jerarquizado unos saberes y
+  pueblos sobre otros, y construir relaciones de
+  diálogo en condiciones de igualdad. Este enfoque,
+  vinculado a la educación decolonial que estudia la
+  Unidad 5, orienta el diálogo entre generaciones y
+  entre saberes que propone el modelo.
+  </p>
+
+  <h2>Pedagogías salvajes</h2>
+
+  <p>
+  Estas propuestas, cuestionan la domesticación de
+  la educación, caracterizada por una escuela cerrada,
+  estandarizada y alejada de la vida cotidiana.
+  En su lugar, plantean recuperar la relación entre
+  naturaleza y cultura, llevando el aprendizaje a
+  espacios y experiencias fuera del aula. En el modelo,
+  estos planteamientos fundamentan la creación de
+  huertas escolares y comunitarias como escenarios
+  donde los estudiantes aprenden mediante la
+  observación, la experimentación y el intercambio
+  de conocimientos con sus familias y la comunidad.
+  </p>
+</article>
+
+<!-- SECCIÓN 3 -->
+<article class="panel-seccion">
+  <div class="encabezado-panel">
+    <span class="numero">3</span>
+    <span class="icono">🧠</span>
+    <span class="titulo-panel">Filosofía y objetivos</span>
+  </div>
+
+  <h2>Filosofía</h2>
+
+  <p>
+  El modelo parte de tres convicciones. Primero,
+  que el saber de las familias es conocimiento
+  legítimo, no solo folclor, porque reúne experiencia
+  acumulada sobre el territorio, la alimentación y
+  el cuidado. Segundo, que aprender y cuidar están
+  estrechamente relacionados: se cuida lo que se
+  conoce, y se conoce mejor lo que se cuida. Tercero,
+  que la escuela no debe ser un lugar aparte de la
+  comunidad a la que pertenece, sino una parte de ella.
+  Estas convicciones se expresan en cuatro valores:
+  el reconocimiento, la reciprocidad entre generaciones,
+  el cuidado del territorio y el diálogo. La visión es
+  una escuela donde el estudiante – joven- urbano
+  pueda decir con orgullo "esto lo sé por mi abuela
+  o por mi familia”.
+  </p>
+
+  <div class="cita">
+    “Esto lo sé por mi abuela o por mi familia”.
+  </div>
+
+  <h2>Objetivo general</h2>
+
+  <p>
+  Recuperar, documentar y devolver a la comunidad
+  saberes sobre plantas de uso cotidiano en Ibagué,
+  mediante un proceso educativo donde los estudiantes
+  dialogan con sus familias, con la ciencia y con
+  el territorio.
+  </p>
+
+  <h2>Objetivo social</h2>
+
+  <p>
+  Reducir la desvalorización de los saberes populares
+  sobre las plantas en la escuela urbana, de modo que
+  estudiantes y familias sean reconocidos como
+  transmisores de ese conocimiento y como cuidadores
+  de la biodiversidad local.
+  </p>
+
+  <h2>Objetivos sociales y culturales</h2>
+
+  <div class="tarjetas">
+    <div class="tarjeta">
+      <strong>🌿 Identidad</strong>
+      Que los estudiantes reconozcan el valor de sus
+      raíces familiares y regionales.
+    </div>
+    <div class="tarjeta">
+      <strong>👵 Convivencia entre generaciones</strong>
+      Abrir un espacio real de diálogo con abuelos,
+      madres, padres y tías.
+    </div>
+    <div class="tarjeta">
+      <strong>🔎 Empoderamiento</strong>
+      Que los jóvenes pasen de receptores a
+      investigadores y guardianes de la biodiversidad local.
+    </div>
+    <div class="tarjeta">
+      <strong>🌳 Sostenibilidad</strong>
+      Propagar plantas que se pierden y recuperar
+      espacios verdes del barrio.
+    </div>
+    <div class="tarjeta">
+      <strong>💚 Bienestar</strong>
+      Ofrecer, mediante la huerta y el espacio de
+      bienestar, un entorno escolar de calma y
+      cuidado emocional.
+    </div>
+  </div>
+</article>
+
+<!-- SECCIÓN 4 -->
+<article class="panel-seccion">
+  <div class="encabezado-panel">
+    <span class="numero">4</span>
+    <span class="icono">✏️</span>
+    <span class="titulo-panel">Diseño pedagógico y curricular</span>
+  </div>
+
+  <h2>Enfoque pedagógico</h2>
+
+  <p>
+  El modelo adopta el aprendizaje comunitario como
+  enfoque central: el conocimiento se construye con
+  la comunidad y para ella. El aprendizaje por
+  proyectos es el método, porque cada eje termina
+  en un producto concreto (fichas, huerta, recetario,
+  feria). El intercambio digital intercultural con
+  un colegio rural es un apoyo que amplía el diálogo
+  de saberes.
+  </p>
+
+  <h2>Estructura curricular</h2>
+
+  <p>
+  El modelo se desarrolla durante el año escolar como
+  un proyecto transversal que articula biología,
+  química, ciencias sociales, artes, lengua castellana,
+  sistemas y el proyecto de vida. Puede vincularse
+  con el servicio social estudiantil obligatorio de
+  décimo y once (mínimo 80 horas, según la Resolución
+  4210 de 1996) en tareas como el cuidado de la huerta,
+  el registro de saberes y los huertos comunitarios.
+  Se organiza en tres ejes, de lo cercano a lo lejano.
+  </p>
+
+  <h3>Eje 1. Casa: saberes que se heredan</h3>
+
+  <p>
+  Cada estudiante realiza una pequeña investigación
+  etnográfica en su familia: entrevista a abuelos,
+  madres, padres, tías y vecinos sobre plantas de comida,
+  infusiones y malestares cotidianos. La actividad
+  retoma la lógica de los libros viajeros usados en
+  algunas aulas de preescolar, ampliada a toda la familia.
+  Los hallazgos se registran en fichas de planta con
+  nombre popular, nombre científico, uso familiar y
+  relato de quién lo enseñó.
+  </p>
+
+  <h3>Eje 2. Escuela: saberes que se cuidan</h3>
+
+  <ul>
+    <li>
+      <strong>Huerta escolar:</strong> con plantas locales
+      como el cilantrón y el achiote.
+    </li>
+    <li>
+      <strong>Laboratorio de diálogo de saberes:</strong>
+      en biología y química se estudia lo que la ciencia
+      dice sobre las plantas que las familias mencionaron,
+      sin burlarse del saber popular ni aceptarlo sin revisar.
+    </li>
+    <li>
+      <strong>Espacio de bienestar con banco de hierbas:</strong>
+      un lugar por crear, en el espacio que el colegio
+      designe, que no funciona como enfermería ni sustituye
+      la atención médica. Sirve para acompañar con
+      aromáticas a un estudiante con un malestar leve
+      mientras llega su familia. Opera con autorización
+      de las familias y registro de alergias al matricular,
+      una lista corta de hierbas de bajo riesgo revisada
+      por un profesional de salud, rotulado e higiene,
+      un adulto responsable de la preparación y un
+      protocolo: si el malestar es fuerte o persiste,
+      se avisa a la familia y se remite a salud. Nunca
+      se afirma que una planta "cura".
+    </li>
+  </ul>
+
+  <h3>Eje 3. Ciudad: saberes que se devuelven</h3>
+
+  <ul>
+    <li>
+      <strong>Huertos comunitarios:</strong> en parques y
+      zonas verdes, con permiso de la autoridad local
+      y acuerdo con el vecindario.
+    </li>
+    <li>
+      <strong>Recetario ilustrado:</strong> con las plantas
+      rescatadas, para que la gente las use, las cuide
+      y les vea valor.
+    </li>
+    <li>
+      <strong>Feria de saberes:</strong> para cerrar el año,
+      con muestra de gastronomía hecha con las plantas
+      trabajadas.
+    </li>
+  </ul>
+
+  <h2>Estrategias creativas y artísticas</h2>
+
+  <p>
+  Ilustración botánica, fotografía, relatos orales,
+  portafolios viajeros y cocina como forma de aprendizaje.
+  Para el diálogo intercultural, se propone un
+  intercambio digital con un colegio rural del Tolima,
+  por ejemplo, mediante videos cortos, de modo que
+  los estudiantes urbanos aprendan de quienes mantienen
+  estos saberes vivos.
+  </p>
+
+  <h2>Evaluación</h2>
+
+  <p>
+  Formativa y por evidencias: portafolio con las fichas,
+  participación en los proyectos, autoevaluación y
+  una rúbrica compartida con los estudiantes.
+  </p>
+</article>
+
+<!-- SECCIÓN 5 -->
+<article class="panel-seccion">
+  <div class="encabezado-panel">
+    <span class="numero">5</span>
+    <span class="icono">🤝</span>
+    <span class="titulo-panel">Implementación e impacto</span>
+  </div>
+
+  <h2>Factibilidad</h2>
+
+  <p>
+  El modelo es de bajo costo. Requiere un espacio
+  pequeño o zona verde del colegio para plantar,
+  semillas o plantas aportadas por las familias,
+  herramientas básicas como palustres, y celulares
+  o computadores del colegio para el registro.
+  Los principales riesgos son los permisos para los
+  huertos públicos y el mantenimiento en vacaciones,
+  que se mitigan con acuerdos tempranos con la
+  autoridad local y turnos de cuidado entre estudiantes
+  y familias.
+  </p>
+
+  <h2>Estrategias creativas</h2>
+
+  <p>
+  Ilustración botánica, fotografía, relatos orales,
+  portafolios viajeros y recetarios de cocina como
+  forma de aprendizaje. Se propone un diálogo
+  intercultural, un intercambio digital con un colegio
+  rural del Tolima (por ejemplo, mediante videos cortos),
+  de modo que los estudiantes urbanos aprendan de
+  quienes mantienen estos saberes vivos.
+  </p>
+
+  <h2>Actores participantes</h2>
+
+  <p>
+  Docentes de ciencias, sociales, artes, lenguaje y
+  sistemas; la enfermería, coordinación o bienestar
+  escolar; las familias; un aliado de salud para revisar
+  el banco de hierbas; y, para los huertos públicos,
+  la alcaldía o la secretaría de ambiente. Una
+  universidad con herbario podría ayudar a identificar
+  las especies.
+  </p>
+
+  <h2>Tiempo: año escolar</h2>
+
+  <div class="tabla-contenedor">
+  <table>
+    <thead>
+      <tr>
+        <th>Periodo</th>
+        <th>Actividad principal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Entrevistas familiares, fichas de plantas y diálogo con la ciencia (Eje 1)</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Huerta, banco de hierbas y creación de espacio como enfermería (Eje 2)</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Huertos comunitarios y recetario (Eje 3)</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Intercambio digital, feria de saberes y evaluación</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>Resultados esperados</h2>
+
+  <div class="tarjetas">
+    <div class="tarjeta">
+      <strong>🌱 Corto plazo</strong>
+      Mayor interés de los estudiantes y reconocimiento
+      de lo que saben sus familias.
+    </div>
+    <div class="tarjeta">
+      <strong>🌿 Mediano plazo</strong>
+      Plantas recuperadas y un recetario compartido
+      en la comunidad.
+    </div>
+    <div class="tarjeta">
+      <strong>🌳 Largo plazo</strong>
+      Que el modelo se replique en otros colegios y
+      que la ciudad conserve parte de su memoria vegetal.
+    </div>
+  </div>
+
+  <h2>Indicadores de impacto y seguimiento</h2>
+
+  <div class="tabla-contenedor">
+  <table>
+    <thead>
+      <tr>
+        <th>Objetivo</th>
+        <th>Indicador</th>
+        <th>Cómo se mide</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Identidad</td>
+        <td>Estudiantes que reconocen el valor del saber de su familia</td>
+        <td>Cuestionario breve al inicio y al final; testimonios en el portafolio</td>
+      </tr>
+      <tr>
+        <td>Convivencia entre generaciones</td>
+        <td>Entrevistas realizadas y familiares que participan en encuentros y en la feria</td>
+        <td>Registro de entrevistas; listas de asistencia</td>
+      </tr>
+      <tr>
+        <td>Empoderamiento</td>
+        <td>Fichas de plantas elaboradas con calidad (nombre popular y científico, uso, relato)</td>
+        <td>Rúbrica aplicada al portafolio</td>
+      </tr>
+      <tr>
+        <td>Sostenibilidad</td>
+        <td>Plantas recuperadas y propagadas que siguen vivas después de varios meses; huertos comunitarios creados y mantenidos</td>
+        <td>Inventario de la huerta y registro de seguimiento</td>
+      </tr>
+      <tr>
+        <td>Bienestar</td>
+        <td>Uso del espacio de bienestar y cumplimiento del protocolo (remisiones a la familia o a salud cuando correspondía)</td>
+        <td>Bitácora del adulto responsable, sin datos clínicos de los estudiantes</td>
+      </tr>
+      <tr>
+        <td>Impacto comunitario</td>
+        <td>Recetario publicado, asistentes a la feria, alianzas formadas (alcaldía, salud, universidad)</td>
+        <td>Evidencias y actas</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</article>
+
+<!-- SECCIÓN 6 -->
+<article class="panel-seccion">
+  <div class="encabezado-panel">
+    <span class="numero">6</span>
+    <span class="icono">💭</span>
+    <span class="titulo-panel">Reflexión</span>
+  </div>
+
+  <h2>Educación, sociedad y reconocimiento de saberes</h2>
+
+  <p>
+  En relación con la educación y la sociedad, se
+  comprende que la escuela no es un espacio neutral,
+  pues reconoce y legitima determinados conocimientos
+  mientras puede invisibilizar otros, especialmente
+  aquellos que se transmiten en el entorno familiar y
+  comunitario, como los saberes de las mujeres mayores.
+  Conceptos como el capital cultural, la violencia
+  simbólica y la ecología de saberes permiten comprender
+  y explicar estas desigualdades, así como reconocer
+  el valor de conocimientos que, aunque no siempre
+  son reconocidos por la educación formal, forman parte
+  de la experiencia y la identidad de las comunidades.
+  </p>
+
+  <h2>Los desafíos de transformar la escuela</h2>
+
+  <p>
+  Proyectos de este tipo son poco frecuentes porque
+  la escuela suele organizarse alrededor de currículos
+  estandarizados, pruebas y mediciones que priorizan
+  lo que se puede calificar con rapidez. Un saber que
+  circula en las familias, que exige tiempo, diálogo y
+  trabajo fuera del aula, encaja mal en esa lógica.
+  A esto se suma que la formación docente rara vez
+  prepara para reconocer el conocimiento popular como
+  saber legítimo. No es que el modelo sea inviable,
+  sino que choca con una escuela diseñada para otros
+  fines.
+  </p>
+
+  <h2>Transformaciones esperadas en la comunidad</h2>
+
+  <p>
+  Si el modelo se implementara, los estudiantes
+  dejarían de ser espectadores de saberes ajenos y
+  pasarían a reconocerse como herederos de un
+  conocimiento propio. Las familias, en especial los
+  adultos mayores y las mujeres, ganarían un lugar
+  como educadoras dentro de la escuela, y el barrio
+  recuperaría plantas y memorias que hoy se pierden
+  sin que nadie lo decida. El mayor aporte sería
+  mostrar que la escuela puede ser un puente entre
+  generaciones y no un espacio separado de la vida
+  cotidiana.
+  </p>
+
+  <h2>Una escuela conectada con la vida</h2>
+
+  <p>
+  El modelo muestra una paradoja de la escuela
+  tradicional: enseña sobre el mundo, pero separa a
+  los estudiantes de él. Los jóvenes pueden aprobar
+  biología sin saber qué planta crece en su barrio
+  ni qué se hacía con ella en su casa. La educación
+  bancaria deposita contenidos, mientras que lo que
+  la comunidad sabe, y está a punto de perder, queda
+  fuera. Reinventar la escuela implica preguntarse
+  qué conocimientos se consideran dignos de enseñarse
+  y quién lo decide. La escuela, que decide qué se
+  enseña, también decide por omisión qué se olvida.
+  Incluir estos saberes en el currículo es una forma
+  de justicia cultural y de cuidado del territorio.
+  </p>
+
+  <h2>Los pequeños cambios también transforman</h2>
+
+  <p>
+  Este modelo muestra que un cambio puede comenzar
+  con algo sencillo, como preguntarle a un abuelo por
+  una planta, registrar su respuesta y sembrarla en
+  un patio escolar. Ese gesto cotidiano, repetido por
+  muchos estudiantes y docentes, puede ser el primer
+  paso de una escuela más diversa, dialógica y
+  arraigada en su territorio.
+  </p>
+
+  <h2>Una mirada crítica sobre el modelo</h2>
+
+  <p>
+  No obstante, un modelo como este también exige
+  una mirada crítica. Valorar el saber popular no
+  significa aceptarlo sin revisión: no todo uso
+  tradicional de una planta es seguro, y por eso el
+  diálogo con la ciencia es indispensable. Además,
+  existe el riesgo de idealizar lo tradicional o de
+  que el proyecto dependa solo del entusiasmo de
+  unos pocos docentes. Su sostenibilidad requiere
+  apoyo institucional, tiempos escolares y acuerdos
+  con la comunidad. Reconocer estos límites forma
+  parte de una educación crítica.
+  </p>
+</article>
+
+<!-- SECCIÓN 7 -->
+<article class="panel-seccion">
+  <div class="encabezado-panel">
+    <span class="numero">7</span>
+    <span class="icono">📖</span>
+    <span class="titulo-panel">Referencias</span>
+  </div>
+
+  <h2>Referencias bibliográficas</h2>
+
+  <p>
+  Fuentes teóricas, académicas, normativas y materiales
+  del curso que fundamentan el modelo educativo
+  Botiquín de la Memoria.
+  </p>
+
+  <div class="referencia">
+  Almodóvar Anaya, R. (2015). [Reseña del libro
+  <i>Epistemologías del Sur (perspectivas)</i>, de
+  B. de Sousa Santos y M. P. Meneses (Eds.)].
+  <i>Revista Andaluza de Antropología</i>, (10), 235–243.
+  <a href="https://idus.us.es/bitstream/handle/11441/105782/almodovar.pdf?sequence=1" target="_blank" rel="noopener">Consultar fuente</a>
+  </div>
+
+  <div class="referencia">
+  Anthropic. (2026). <i>Claude</i> (Versión Claude 3.7 Sonnet)
+  [Modelo de lenguaje de gran tamaño].
+  <a href="https://claude.ai" target="_blank" rel="noopener">Consultar fuente</a>
+  </div>
+
+  <div class="referencia">
+  Bourdieu, P. (1987). Los tres estados del capital
+  cultural (M. Landesmann, Trad.).
+  <i>Sociológica, 2</i>(5).
+  <a href="https://sociologicamexico.azc.uam.mx/index.php/Sociologica/article/download/1043/1015/2068" target="_blank" rel="noopener">Consultar fuente</a>
+  </div>
+
+  <div class="referencia">
+  Bourdieu, P., &amp; Passeron, J.-C. (1998).
+  <i>La reproducción: Elementos para una teoría del
+  sistema de enseñanza</i>. Fontamara. (Obra original
+  publicada en 1970).
+  <a href="https://anthropos.webador.mx/_downloads/5a672ab8494516443d842c83ec002c34" target="_blank" rel="noopener">Consultar fuente</a>
+  </div>
+
+  <div class="referencia">
+  Congreso de la República de Colombia. (1994, 8 de febrero).
+  Ley 115 de 1994: Por la cual se expide la Ley General
+  de Educación. Diario Oficial No. 41.214.
+  <a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=292" target="_blank" rel="noopener">Consultar fuente</a>
+  </div>
+
+  <div class="referencia">
+  De Sousa Santos, B. (2010).
+  <i>Descolonizar el saber, reinventar el poder</i>.
+  Ediciones Trilce; Universidad de la República.
+  <a href="https://rebelion.org/docs/200374.pdf" target="_blank" rel="noopener">Consultar fuente</a>
+  </div>
+
+  <div class="referencia">
+  De Sousa Santos, B. (2018).
+  <i>Construyendo las epistemologías del Sur: Para un
+  pensamiento alternativo de alternativas</i>
+  (Vol. 2; M. P. Meneses et al., Comps.). CLACSO.
+  <a href="https://biblioteca.clacso.edu.ar/clacso/se/20181203040448/Antologia_Boaventura_Vol2.pdf" target="_blank" rel="noopener">Consultar fuente</a>
+  </div>
+
+  <div class="referencia">
+  Example project: <i>Escuela Semilla: An intercultural
+  agroecological model for rural youth in the Coffee Axis</i>.
+  (s. f.). [Material del curso Sociología y Antropología
+  de la Educación].
+  </div>
+
+  <div class="referencia">
+  Freire, P. (2005). <i>Pedagogía del oprimido</i>
+  (2.ª ed.; J. Mellado, Trad.). Siglo XXI Editores.
+  (Obra original publicada en 1970).
+  <a href="https://dn721903.ca.archive.org/0/items/freire-pedagogia-del-oprimido/freire-pedagogia-del-oprimido_text.pdf" target="_blank" rel="noopener">Consultar fuente</a>
+  </div>
+
+  <div class="referencia">
+  Jickling, B., Blenkinsop, S., Timmerman, N., &amp;
+  Sitka-Sage, M. D. (Eds.). (2018).
+  <i>Wild pedagogies: Touchstones for re-negotiating
+  education and the environment in the Anthropocene</i>.
+  Palgrave Macmillan.
+  <a href="https://doi.org/10.1007/978-3-319-90176-3" target="_blank" rel="noopener">Consultar fuente</a>
+  </div>
+
+  <div class="referencia">
+  Ministerio de Educación Nacional. (1996, 12 de septiembre).
+  Resolución 4210 de 1996: Por la cual se establecen
+  reglas generales para la organización y el funcionamiento
+  del servicio social estudiantil obligatorio.
+  <a href="https://www.mineducacion.gov.co/normatividad/1753/articles-96032_archivo_pdf.pdf" target="_blank" rel="noopener">Consultar fuente</a>
+  </div>
+
+  <div class="referencia">
+  Morse, M., Blenkinsop, S., &amp; Jickling, B. (2021).
+  Wilding educational policy: Hope for the future.
+  <i>Policy Futures in Education, 19</i>, 262–268.
+  <a href="https://doi.org/10.1177/1478210320969967" target="_blank" rel="noopener">Consultar fuente</a>
+  </div>
+
+  <div class="referencia">
+  Osorio Giraldo, J. J. (2024a). Educación crítica:
+  Pedagogía del oprimido, modelos alternativos y escuelas
+  anarquistas (Unidad 4, EA1) [Material del curso
+  Sociología y Antropología de la Educación].
+  Universidad del Quindío.
+  </div>
+
+  <div class="referencia">
+  Osorio Giraldo, J. J. (2024b). Educación poscolonial,
+  diversidad y la reinvención de la escuela (Unidad 5,
+  EA1) [Material del curso Sociología y Antropología
+  de la Educación]. Universidad del Quindío.
+  </div>
+
+  <div class="referencia">
+  Walsh, C. (2007). Interculturalidad, colonialidad
+  y educación. <i>Revista Educación y Pedagogía,
+  19</i>(48), 25–36.
+  <a href="https://revistas.udea.edu.co/index.php/revistaeyp/article/download/6652/6095/18526" target="_blank" rel="noopener">Consultar fuente</a>
+  </div>
+
+  <div class="referencia">
+  Walsh, C. (2009a). <i>Interculturalidad crítica y
+  educación intercultural</i>. Universidad de Chile.
+  <a href="https://portaluchile.uchile.cl/dam/jcr:9a895201-1689-4c50-8f2d-df419340df47/interculturalidad-critica-y-educacion-intercultural.pdf" target="_blank" rel="noopener">Consultar fuente</a>
+  </div>
+
+  <div class="referencia">
+  Walsh, C. (2009b). Interculturalidad crítica y
+  pedagogía de-colonial: Apuestas (des)de el in-surgir,
+  re-existir y re-vivir. En V. M. Candau (Org.),
+  <i>Educação intercultural na América Latina: Entre
+  concepções, tensões e propostas</i>. 7Letras.
+  <a href="https://www.maxwell.vrac.puc-rio.br/13582/13582.PDFXXvmi" target="_blank" rel="noopener">Consultar fuente</a>
+  </div>
+</article>
+
+</main>
+
+<footer class="pie">
+  <p>
+    <strong>Botiquín de la Memoria</strong>
+  </p>
+  <p>
+    Recuperar los saberes, cuidar las plantas
+    y conectar generaciones.
+  </p>
+  <p>Universidad del Quindío · Licenciatura en Ciencias Sociales</p>
+  <a class="boton-superior" href="#inicio">Volver al inicio ↑</a>
+</footer>
+
+<script>
+const botones = document.querySelectorAll(".acceso");
+const paneles = document.querySelectorAll(".panel-seccion");
+
+function abrirSeccion(indice) {
+  const yaEstaAbierta = paneles[indice].classList.contains("activa");
+
+  botones.forEach((btn) => btn.classList.remove("activo"));
+  paneles.forEach((panel) => panel.classList.remove("activa"));
+
+  if (!yaEstaAbierta) {
+    botones[indice].classList.add("activo");
+    paneles[indice].classList.add("activa");
+
+    const explorador = document.getElementById("explorador");
+    if (explorador) {
+      explorador.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  }
+}
+</script>
+
+</body>
+</html>
